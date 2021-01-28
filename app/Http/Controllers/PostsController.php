@@ -13,6 +13,11 @@ class PostsController extends Controller
 
     public function store(Request $request)
     {
-        dd('ok');
+        $this->validate($request, [
+            'body' => 'required'
+        ]);
+
+        // auth()->user()->posts()->create();
+
     }
 }
