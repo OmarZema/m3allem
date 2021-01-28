@@ -25,12 +25,20 @@
             </li>
         </ul>
         <ul class="flex item-center">
-          @auth
+           
 
+          @auth
+ <li>
+                <a href="" class="p-3">{{auth()->user()->name}}</a>
+
+            </li>
             <li>
                 <form action="{{ route('logout')}}" method="post" class="p-3 inline">
-                    <button type="submit" >Logout</button>
+                   
+                   @csrf
+                    <button  type="submit" >Logout</button>
                 </form>
+                {{-- <a href="{{ route('logout')}}">Logout</a> --}}
             </li>
 
             @endauth
