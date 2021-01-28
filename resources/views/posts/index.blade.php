@@ -30,16 +30,36 @@
    @if ($posts->count())
      @foreach($posts as $post)
             <div class="mb-4">
-               <a href="" class="font-bold">{{$post->user->name}}</a> <span class="text-gray-600 text-sm">{{$post->created_at->diffForHumans()}}</span>
+               <a href="" class="font-bold">{{$post->user->name}}</a>
+                <span class="text-gray-600 text-sm">{{$post->created_at->diffForHumans()}}
+               </span>
             <p class="mb-2">{{$post->content}}</p>
             </div>
-      @endforeach
-        
 
+
+            <div class="flex items-center">
+               @if (!$post->likedBy(auth()->user()))
+                  <form action="{{route('posts.likes',$post)}}" class="mr-1" method="post">
+                     @csrf 
+                     <button type="submit" class="text-blue-500">Like</button>
+                  </form>
+               @else 
+               <form action="{{route('posts.likes',$post)}}" class="mr-1" method="DELETE">
+                  @csrf 
+                  @method('DELETE')
+                  <button type="submit" class="text-blue-500" >Unlike</button>
+               </form>
+               @endif
+
+
+         <span>{{ $post->likes->count() }} {{Str::plural('like',
+         $post->likes->count())}}</span>
+
+            </div>
+
+
+      @endforeach 
              {{ $posts->links()}}
-
-
-
       @else 
          <p>there are no posts</p>
       @endif

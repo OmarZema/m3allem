@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>M3ellem</title>
+    <title>M3allem</title>
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
 
 </head>
@@ -28,10 +28,10 @@
            
 
           @auth
- <li>
-                <a href="" class="p-3">{{auth()->user()->name}}</a>
+        <li>
+             <a href="" class="p-3">{{auth()->user()->name}}</a>
 
-            </li>
+         </li>
             <li>
                 <form action="{{ route('logout')}}" method="post" class="p-3 inline">
                    
