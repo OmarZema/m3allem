@@ -20,7 +20,7 @@
                   <a href=" {{ route('dashboard') }}" class="p-3">Doshboard</a>
             </li>
             <li>
-                <a href="" class="p-3">TEST</a>
+                <a href="{{ route('posts') }}" class="p-3">Posts</a>
 
             </li>
         </ul>
@@ -53,6 +53,7 @@
             @endguest
         </ul>
     </nav>
+  
 @yield('content')
 </body>
 
