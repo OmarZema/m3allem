@@ -17,7 +17,12 @@ class PostsController extends Controller
             'body' => 'required'
         ]);
 
-        // auth()->user()->posts()->create();
+        // $request->user()->posts()->create($request->only('body'));
 
+        $request->user()->posts()->create([
+            'content' => $request->body
+        ]);
+
+        return back();
     }
 }
