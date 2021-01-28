@@ -34,10 +34,15 @@
             <p class="mb-2">{{$post->content}}</p>
             </div>
       @endforeach
+        
 
-   @else 
-<p>there are no posts</p>
-   @endif
+             {{ $posts->links()}}
+
+
+
+      @else 
+         <p>there are no posts</p>
+      @endif
     </div>
    </div>
 @endsection
