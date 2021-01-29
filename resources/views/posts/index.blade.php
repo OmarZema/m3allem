@@ -35,8 +35,8 @@
                </span>
             <p class="mb-2">{{$post->content}}</p>
             </div>
-
-<div>
+{{-- @if ($post->ownedBy(auth()->user())) --}}
+@can('delete', $post)
    <form action="{{ route('posts.destroy', $post) }}" method="DELETE">
    @method('DELETE')
       @csrf 
@@ -44,7 +44,8 @@
                             <i class="fas fa-trash fa-lg text-danger"></i>
                             </button>
 </form>
-</div>
+@endcan
+{{-- @endif --}}
             <div class="flex items-center">
                 @auth
                @if (!$post->likedBy(auth()->user()))

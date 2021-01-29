@@ -13,7 +13,8 @@ class PostsController extends Controller
     // }
     public function index()
     {
-        $posts = Post::with(['user', 'likes'])->paginate(2);
+        // $posts = Post::orderBy('created_at', 'desc')->with(['user', 'likes'])->paginate(2);
+        $posts = Post::latest()->with(['user', 'likes'])->paginate(2);
 
         // $posts = Post::get();
 
@@ -40,6 +41,7 @@ class PostsController extends Controller
 
     public function destroy(Post $post)
     {
+        $this->authorize('delete', $post);
 
         // dd($post);
         $post->delete();
