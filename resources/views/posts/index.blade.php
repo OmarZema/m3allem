@@ -36,7 +36,15 @@
             <p class="mb-2">{{$post->content}}</p>
             </div>
 
-
+<div>
+   <form action="{{ route('posts.destroy', $post) }}" method="DELETE">
+   @method('DELETE')
+      @csrf 
+<button type="submit" title="delete" style="border: none; background-color:transparent;">
+                            <i class="fas fa-trash fa-lg text-danger"></i>
+                            </button>
+</form>
+</div>
             <div class="flex items-center">
                 @auth
                @if (!$post->likedBy(auth()->user()))
@@ -51,9 +59,8 @@
                   <button type="submit" class="text-blue-500" >Unlike</button>
                </form>
                @endif
-               
 
-         @endauth
+               @endauth
 
          <span>{{ $post->likes->count() }} {{Str::plural('like',
          $post->likes->count())}}</span>

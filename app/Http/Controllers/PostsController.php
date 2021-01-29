@@ -37,4 +37,12 @@ class PostsController extends Controller
 
         return back();
     }
+
+    public function destroy(Post $post)
+    {
+
+        // dd($post);
+        $post->delete();
+        return back();
+    }
 }
