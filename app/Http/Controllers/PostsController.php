@@ -7,13 +7,13 @@ use Illuminate\Http\Request;
 
 class PostsController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware(['auth']);
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware(['auth']);
+    // }
     public function index()
     {
-        $posts = Post::paginate(2);
+        $posts = Post::with(['user', 'likes'])->paginate(2);
 
         // $posts = Post::get();
 
